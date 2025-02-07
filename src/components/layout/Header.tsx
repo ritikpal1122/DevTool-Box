@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Settings, LogIn, LogOut, User } from 'lucide-react';
+import { Menu, X, Settings, LogIn, LogOut, User, Github } from 'lucide-react';
 import { AuthModal } from '../auth/AuthModal';
 import { supabase } from '../../lib/supabase';
 
@@ -58,15 +58,16 @@ export const Header: React.FC = () => {
                 </motion.button>
               </div>
             ) : (
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark"
+              
+                href=''
+                className="flex items-center space-x-2 px-4 py-2  text-white "
               >
-                <LogIn className="w-4 h-4" />
-                <span>Sign In</span>
-              </motion.button>
+                <Github className="w-4 h-4" />
+                <span></span>
+              </motion.a>
             )}
           </div>
 
