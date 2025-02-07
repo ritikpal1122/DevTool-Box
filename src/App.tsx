@@ -27,9 +27,9 @@ function App() {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
-      if (!session?.user && selectedTool) {
-        setSelectedTool(null); // Return to landing page on sign out
-      }
+      // if (!session?.user && selectedTool) {
+      //   setSelectedTool(null); // Return to landing page on sign out
+      // }
     });
 
     return () => subscription.unsubscribe();
