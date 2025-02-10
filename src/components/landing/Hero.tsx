@@ -91,9 +91,9 @@ export const Hero: React.FC<HeroProps> = ({ onSelectTool }) => {
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
 
       {/* Background decorations */}
-      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
-      <div className="absolute top-1/3 right-0 w-72 h-72 bg-dark-lighter rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
-      <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-primary-light rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
+      <div className=" hidden md:flex absolute top-1/4 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
+      <div className=" hidden md:flex absolute top-1/3 right-0 w-72 h-72 bg-dark-lighter rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
+      <div className=" hidden md:flex absolute bottom-0 left-1/2 w-72 h-72 bg-primary-light rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
     </div>
   );
 };

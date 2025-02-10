@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Code2,
@@ -15,6 +15,7 @@ import {
   LogIn,
   LogOut,
   User,
+  MenuIcon,
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { AuthModal } from './auth/AuthModal';
@@ -40,6 +41,7 @@ const tools = [
 export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) => {
   const [user, setUser] = React.useState<any>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
+  const [isToolMenuVisible, setIsToolMenuVisible] = React.useState<boolean>(false)
 
   React.useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -65,15 +67,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
         initial={{ x: -280 }}
         animate={{ x: 0 }}
         transition={{ type: "spring", damping: 20 }}
-        className="w-72 bg-dark-light border-r border-primary/10 h-screen flex flex-col"
+        className=" w-full md:w-72 bg-dark-light border-r border-primary/10 md:h-screen flex flex-col"
       >
         <div className="p-6 border-b border-primary/10">
           <div className="flex items-center space-x-3">
             <Settings className="w-6 h-6 text-primary" />
             <h1 className="text-xl font-bold text-white">DevToolbox</h1>
+            <button className=' flex-1 flex justify-end' onClick={()=>setIsToolMenuVisible(val=>!val)}>
+              <MenuIcon/>
+            </button>
           </div>
         </div>
         
+        {isToolMenuVisible && 
         <nav className="flex-1 overflow-y-auto p-4 space-y-2">
           {tools.map((tool) => {
             const Icon = tool.icon;
@@ -94,8 +100,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
               </motion.button>
             );
           })}
-        </nav>
+        </nav>}
 
+        {isToolMenuVisible && 
         <div className="p-4 border-t border-primary/10">
           {user ? (
             <div className="space-y-3">
@@ -124,7 +131,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
               <span>Sign In</span>
             </motion.button>
           )}
-        </div>
+        </div>}
       </motion.div>
 
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
