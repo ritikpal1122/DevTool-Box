@@ -63,7 +63,7 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-dark font-grotesk overflow-x-hidden">
+    <div className="flex flex-col md:flex-row min-h-screen bg-dark font-grotesk overflow-x-hidden">
       {selectedTool && <Sidebar selectedTool={selectedTool} onSelectTool={setSelectedTool} />}
       <main className={`flex-1 ${!selectedTool && 'w-full'}`}>
         <AnimatePresence mode="wait">
