@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Code2,
@@ -19,6 +19,16 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { AuthModal } from './auth/AuthModal';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { useWindowSize } from '@/hooks/useWindow';
+
 
 interface SidebarProps {
   selectedTool: string | null;
@@ -42,6 +52,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
   const [user, setUser] = React.useState<any>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
   const [isToolMenuVisible, setIsToolMenuVisible] = React.useState<boolean>(false)
+
+  const window = useWindowSize();
+
+  const [isSmaller, setIsSmaller] = useState<boolean>(window.width>768?false:true)
+
+  useEffect(()=>{
+
+    if(window.width>768){
+      setIsSmaller(false)
+    }
+    else {
+      setIsSmaller(true)
+    }
+
+  },[window.width])
+
+  useEffect(()=>{
+    if(!isSmaller){
+      setIsToolMenuVisible(false)
+    }
+
+  },[isSmaller])
 
   React.useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -67,19 +99,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
         initial={{ x: -280 }}
         animate={{ x: 0 }}
         transition={{ type: "spring", damping: 20 }}
-        className=" w-full md:w-72 bg-dark-light border-r border-primary/10 md:h-screen flex flex-col"
+        className=" hidden w-full md:w-72 bg-dark-light border-r border-primary/10 md:h-screen md:flex flex-col"
       >
         <div className="p-6 border-b border-primary/10">
           <div className="flex items-center space-x-3">
             <Settings className="w-6 h-6 text-primary" />
             <h1 className="text-xl font-bold text-white">DevToolbox</h1>
-            <button className=' flex-1 flex justify-end' onClick={()=>setIsToolMenuVisible(val=>!val)}>
+            <button className='md:hidden flex-1 flex justify-end' onClick={()=>setIsToolMenuVisible(val=>!val)}>
               <MenuIcon/>
             </button>
           </div>
         </div>
         
-        {isToolMenuVisible && 
         <nav className="flex-1 overflow-y-auto p-4 space-y-2">
           {tools.map((tool) => {
             const Icon = tool.icon;
@@ -100,9 +131,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
               </motion.button>
             );
           })}
-        </nav>}
+        </nav>
 
-        {isToolMenuVisible && 
         <div className="p-4 border-t border-primary/10">
           {user ? (
             <div className="space-y-3">
@@ -131,8 +161,89 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
               <span>Sign In</span>
             </motion.button>
           )}
-        </div>}
+        </div>
       </motion.div>
+
+      <Sheet open={isToolMenuVisible}>
+      {/* <Sheet> */}
+        <motion.div
+          initial={{ x: -280 }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", damping: 20 }}
+          className=" md:hidden w-full md:w-72 bg-dark-light border-r border-primary/10 md:h-screen flex flex-col"
+        >
+          <div className="p-6 border-b border-primary/10">
+            <div className="flex items-center space-x-3">
+              <Settings className="w-6 h-6 text-primary" />
+              <h1 className="text-xl font-bold text-white">DevToolbox</h1>
+              <SheetTrigger className=' flex-1 flex justify-end z-50' onClick={()=>setIsToolMenuVisible(val=>!val)}>
+                <MenuIcon/>
+              </SheetTrigger>
+            </div>
+          </div>
+          
+          <motion.div>
+            <SheetContent 
+            side={"top"} 
+            className=' bg-dark-light top-16 '
+            onPointerDownOutside={()=>setIsToolMenuVisible(val=>!val)}
+            >
+              <SheetTitle hidden={true}>Navigation Bar</SheetTitle>
+              <SheetDescription hidden={true}>Navigation Bar to navigate through tools</SheetDescription>
+              <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                {tools.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <motion.button
+                      key={tool.id}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {onSelectTool(tool.id); setIsToolMenuVisible(val=>!val)} }
+                      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
+                        selectedTool === tool.id
+                          ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                          : 'text-gray-300 hover:bg-dark-lighter hover:text-white'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                      <span>{tool.name}</span>
+                    </motion.button>
+                  );
+                })}
+              </nav>
+              <div className="p-4 border-t border-primary/10">
+                {user ? (
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3 px-4 py-2 rounded-lg bg-dark-lighter">
+                      <User className="w-4 h-4 text-primary" />
+                      <span className="text-sm text-gray-300 truncate">{user.email}</span>
+                    </div>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={handleSignOut}
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </motion.button>
+                  </div>
+                ) : (
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setIsAuthModalOpen(true)}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    <span>Sign In</span>
+                  </motion.button>
+                )}
+              </div>
+            </SheetContent>
+          </motion.div>
+        </motion.div>
+      </Sheet>
 
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </>

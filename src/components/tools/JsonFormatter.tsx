@@ -24,7 +24,8 @@ export const JsonFormatter: React.FC = () => {
 
   return (
     <div className="h-full bg-dark">
-      <ToolHeader title="JSON Formatter" user={user} />
+      {/* <ToolHeader title="JSON Formatter" user={user} /> */}
+      <ToolHeader title="JSON Formatter"  />
       
       <div className="p-6 space-y-4">
         <div className="grid grid-cols-2 gap-6 h-[calc(100vh-200px)]">

@@ -33,7 +33,7 @@ export const ToolHeader: React.FC<ToolHeaderProps> = ({ title }) => {
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex justify-between items-center p-6 bg-dark-light border-b border-primary/10"
+        className="flex justify-between items-center p-6 bg-dark border-b border-primary/10"
       >
         <motion.h2
           initial={{ x: -20, opacity: 0 }}
@@ -43,7 +43,7 @@ export const ToolHeader: React.FC<ToolHeaderProps> = ({ title }) => {
           {title}
         </motion.h2>
         
-        <div className="flex items-center space-x-4">
+        {/* <div className="flex items-center space-x-4">
           {user ? (
             <motion.div
               initial={{ x: 20, opacity: 0 }}
@@ -77,7 +77,7 @@ export const ToolHeader: React.FC<ToolHeaderProps> = ({ title }) => {
               <span>Sign In</span>
             </motion.button>
           )}
-        </div>
+        </div> */}
       </motion.div>
 
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
