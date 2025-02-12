@@ -68,14 +68,14 @@ export const Features: React.FC = () => {
   });
 
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 border-b-[0.5px] border-dark-light ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl font-bold text-gray-100 mb-4"
           >
             Powerful Developer Tools
           </motion.h2>
@@ -83,7 +83,7 @@ export const Features: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-xl text-gray-200 max-w-2xl mx-auto"
           >
             Everything you need to streamline your development workflow,
             all in one beautiful interface.
@@ -102,15 +102,15 @@ export const Features: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors"
+                className="bg-dark-light  rounded-xl p-6 hover:bg-gray-100 hover:text-gray-800 transition-colors"
               >
-                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-indigo-600" />
+                <div className="w-12 h-12  rounded-lg flex items-center justify-center mb-4">
+                  <Icon className="w-8 h-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold hover:text-gray-800 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="">{feature.description}</p>
               </motion.div>
             );
           })}

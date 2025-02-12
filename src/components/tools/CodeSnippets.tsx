@@ -51,18 +51,20 @@ export const CodeSnippets: React.FC = () => {
     setSnippets(snippets.filter(snippet => snippet.id !== id));
   };
 
+
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-6"
     >
-      <h2 className="text-2xl font-bold text-gray-800">Code Snippets</h2>
+      <h2 className="text-2xl font-bold text-white">Code Snippets</h2>
       
-      <div className="grid grid-cols-2 gap-6">
+      <div className="md:grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">Title</label>
+            <label className="block text-sm font-medium text-gray-300">Title</label>
             <input
               type="text"
               value={title}
@@ -73,7 +75,7 @@ export const CodeSnippets: React.FC = () => {
           </div>
           
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">Language</label>
+            <label className="block text-sm font-medium text-gray-300">Language</label>
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
@@ -88,7 +90,7 @@ export const CodeSnippets: React.FC = () => {
           </div>
           
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">Code</label>
+            <label className="block text-sm font-medium text-gray-300">Code</label>
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
@@ -109,7 +111,7 @@ export const CodeSnippets: React.FC = () => {
         </div>
         
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-700">Saved Snippets</h3>
+          <h3 className="text-lg font-semibold mt-5 md:mt-0 text-gray-300">Saved Snippets</h3>
           <div className="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto">
             {snippets.length === 0 ? (
               <div className="text-gray-500 text-center py-8">
@@ -130,7 +132,7 @@ export const CodeSnippets: React.FC = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleCopy(snippet.id, snippet.code)}
-                        className="text-gray-500 hover:text-gray-700"
+                        className="text-gray-500 hover:text-gray-300"
                       >
                         {copied === snippet.id ? (
                           <Check className="w-4 h-4" />

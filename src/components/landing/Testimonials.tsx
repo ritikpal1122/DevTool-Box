@@ -34,14 +34,14 @@ export const Testimonials: React.FC = () => {
   });
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section id="testimonials" className="py-20 border-b-[0.5px] border-dark-light  ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl font-bold text-gray-100 mb-4"
           >
             Loved by Developers
           </motion.h2>
@@ -49,7 +49,7 @@ export const Testimonials: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
           >
             See what developers around the world are saying about DevToolbox
           </motion.p>
@@ -65,7 +65,7 @@ export const Testimonials: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-dark-light rounded-xl p-6 shadow-lg"
             >
               <div className="flex items-center mb-4">
                 <img
@@ -74,10 +74,10 @@ export const Testimonials: React.FC = () => {
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-100">
                     {testimonial.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-400">
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </div>
@@ -90,7 +90,7 @@ export const Testimonials: React.FC = () => {
                   />
                 ))}
               </div>
-              <p className="text-gray-600">{testimonial.content}</p>
+              <p className="text-gray-500">{testimonial.content}</p>
             </motion.div>
           ))}
         </div>

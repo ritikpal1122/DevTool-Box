@@ -39,11 +39,11 @@ export const HashGenerator: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-6"
     >
-      <h2 className="text-2xl font-bold text-gray-800">Hash Generator</h2>
+      <h2 className="text-2xl font-bold text-white">Hash Generator</h2>
       
       <div className="space-y-6">
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Input Text</label>
+          <label className="block text-sm font-medium text-gray-300">Input Text</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -61,8 +61,8 @@ export const HashGenerator: React.FC = () => {
               onClick={() => setHashType(type)}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 hashType === type
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
               }`}
             >
               {type}
@@ -72,19 +72,19 @@ export const HashGenerator: React.FC = () => {
         
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <label className="block text-sm font-medium text-gray-700">Hash Output</label>
+            <label className="block text-sm font-medium text-gray-300">Hash Output</label>
             {input && (
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopy}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-300"
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </motion.button>
             )}
           </div>
-          <div className="w-full bg-gray-50 rounded-lg p-4 font-mono text-sm break-all">
+          <div className="w-full bg-dark-light text-gray-300 rounded-lg p-4 font-mono text-sm break-all">
             {input ? generateHash() : 'Hash will appear here...'}
           </div>
         </div>

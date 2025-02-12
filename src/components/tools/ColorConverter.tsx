@@ -65,18 +65,18 @@ export const ColorConverter: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-6"
     >
-      <h2 className="text-2xl font-bold text-gray-800">Color Converter</h2>
+      <h2 className="text-2xl font-bold text-white">Color Converter</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Color Preview</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Color Preview</label>
             <div className="h-32 rounded-lg shadow-inner" style={{ backgroundColor: hex }} />
           </div>
 
           <div className="space-y-4">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">HEX</label>
+              <label className="block text-sm font-medium text-gray-300">HEX</label>
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -89,7 +89,7 @@ export const ColorConverter: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleCopy(hex, 'hex')}
-                  className="px-3 text-gray-500 hover:text-gray-700"
+                  className="px-3 text-gray-500 hover:text-gray-300"
                 >
                   {copied === 'hex' ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                 </motion.button>
@@ -97,7 +97,7 @@ export const ColorConverter: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">RGB</label>
+              <label className="block text-sm font-medium text-gray-300">RGB</label>
               <div className="flex gap-2">
                 <div className="flex-1 input-field">
                   {`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`}
@@ -106,7 +106,7 @@ export const ColorConverter: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleCopy(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`, 'rgb')}
-                  className="px-3 text-gray-500 hover:text-gray-700"
+                  className="px-3 text-gray-500 hover:text-gray-300"
                 >
                   {copied === 'rgb' ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                 </motion.button>
@@ -114,7 +114,7 @@ export const ColorConverter: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">HSL</label>
+              <label className="block text-sm font-medium text-gray-300">HSL</label>
               <div className="flex gap-2">
                 <div className="flex-1 input-field">
                   {`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`}
@@ -123,7 +123,7 @@ export const ColorConverter: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleCopy(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`, 'hsl')}
-                  className="px-3 text-gray-500 hover:text-gray-700"
+                  className="px-3 text-gray-500 hover:text-gray-300"
                 >
                   {copied === 'hsl' ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                 </motion.button>
@@ -133,10 +133,10 @@ export const ColorConverter: React.FC = () => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-700">Color Values</h3>
+          <h3 className="text-lg font-semibold text-gray-300">Color Values</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Red</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Red</label>
               <input
                 type="number"
                 value={rgb.r}
@@ -147,7 +147,7 @@ export const ColorConverter: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Green</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Green</label>
               <input
                 type="number"
                 value={rgb.g}
@@ -158,7 +158,7 @@ export const ColorConverter: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Blue</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Blue</label>
               <input
                 type="number"
                 value={rgb.b}
@@ -172,7 +172,7 @@ export const ColorConverter: React.FC = () => {
 
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Hue</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Hue</label>
               <input
                 type="number"
                 value={hsl.h}
@@ -183,7 +183,7 @@ export const ColorConverter: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Saturation</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Saturation</label>
               <input
                 type="number"
                 value={hsl.s}
@@ -194,7 +194,7 @@ export const ColorConverter: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Lightness</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Lightness</label>
               <input
                 type="number"
                 value={hsl.l}

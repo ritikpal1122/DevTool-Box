@@ -25,10 +25,18 @@ export const JsonFormatter: React.FC = () => {
   return (
     <div className="h-full bg-dark">
       {/* <ToolHeader title="JSON Formatter" user={user} /> */}
-      <ToolHeader title="JSON Formatter"  />
-      
+      <ToolHeader title="JSON Formatter" />
+
       <div className="p-6 space-y-4">
-        <div className="grid grid-cols-2 gap-6 h-[calc(100vh-200px)]">
+        <div className="flex justify-end">  <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={formatJson}
+          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+        >
+          Format
+        </motion.button></div>
+        <div className="grid  md:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-300">Input JSON</label>
             <textarea
@@ -38,20 +46,13 @@ export const JsonFormatter: React.FC = () => {
               placeholder="Paste your JSON here..."
             />
           </div>
-          
-          <div className="space-y-2">
-            <div className="flex justify-between items-center">
+
+          <div className="space-y-2 mt-5 md:mt-0 pb-10 md:pb-0">
+            <div className="flex justify-between items-center ">
               <label className="block text-sm font-medium text-gray-300">Formatted Output</label>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={formatJson}
-                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                Format
-              </motion.button>
+
             </div>
-            
+
             {error ? (
               <div className="text-primary p-4 bg-primary/10 rounded-lg border border-primary/20">
                 {error}

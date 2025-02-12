@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = ({ onSelectTool }) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-dark-light pt-20">
+    <div className="relative min-h-screen  pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="text-center">
           <motion.div
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onSelectTool }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleGetStarted}
-              className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-primary justify-center text-white rounded-lg hover:bg-primary-dark transition-colors"
             >
               <Code2 className="w-5 h-5 mr-2" />
               <span>Get Started</span>
@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onSelectTool }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsAuthModalOpen(true)}
-              className="inline-flex items-center px-6 py-3 bg-dark-lighter text-white rounded-lg hover:bg-dark transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 bg-dark-lighter text-white rounded-lg hover:bg-dark transition-colors"
             >
               <Zap className="w-5 h-5 mr-2" />
               <span>Sign In</span>
@@ -91,9 +91,9 @@ export const Hero: React.FC<HeroProps> = ({ onSelectTool }) => {
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
 
       {/* Background decorations */}
-      <div className=" hidden md:flex absolute top-1/4 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
+      {/* <div className=" hidden md:flex relative top-1/4 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
       <div className=" hidden md:flex absolute top-1/3 right-0 w-72 h-72 bg-dark-lighter rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
-      <div className=" hidden md:flex absolute bottom-0 left-1/2 w-72 h-72 bg-primary-light rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
+      <div className=" hidden md:flex absolute bottom-0 left-1/2 w-72 h-72 bg-primary-light rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" /> */}
     </div>
   );
 };

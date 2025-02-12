@@ -92,7 +92,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
     
 
   };
-
+  
+  function handleSidebarClick() {
+    onSelectTool("")
+  }
   return (
     <>
       <motion.div
@@ -102,7 +105,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ selectedTool, onSelectTool }) 
         className=" hidden w-full md:w-72 bg-dark-light border-r border-primary/10 md:h-screen md:flex flex-col"
       >
         <div className="p-6 border-b border-primary/10">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={handleSidebarClick}>
             <Settings className="w-6 h-6 text-primary" />
             <h1 className="text-xl font-bold text-white">DevToolbox</h1>
             <button className='md:hidden flex-1 flex justify-end' onClick={()=>setIsToolMenuVisible(val=>!val)}>

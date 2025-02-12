@@ -36,11 +36,11 @@ export const JwtDecoder: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-4"
     >
-      <h2 className="text-2xl font-bold text-gray-800">JWT Decoder</h2>
+      <h2 className="text-2xl font-bold text-white">JWT Decoder</h2>
       
       <div className="space-y-4">
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">JWT Token</label>
+          <label className="block text-sm font-medium text-gray-300">JWT Token</label>
           <textarea
             value={token}
             onChange={(e) => setToken(e.target.value)}
@@ -67,7 +67,7 @@ export const JwtDecoder: React.FC = () => {
           decodedHeader && decodedPayload && (
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-gray-700">Header</h3>
+                <h3 className="text-lg font-semibold text-gray-300">Header</h3>
                 <SyntaxHighlighter
                   language="json"
                   style={vscDarkPlus}
@@ -78,7 +78,7 @@ export const JwtDecoder: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-gray-700">Payload</h3>
+                <h3 className="text-lg font-semibold text-gray-300">Payload</h3>
                 <SyntaxHighlighter
                   language="json"
                   style={vscDarkPlus}

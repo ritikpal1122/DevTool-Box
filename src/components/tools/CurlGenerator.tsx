@@ -58,13 +58,13 @@ export const CurlGenerator: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-6"
     >
-      <h2 className="text-2xl font-bold text-gray-800">cURL Generator</h2>
+      <h2 className="text-2xl font-bold text-white">cURL Generator</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div className="flex gap-4">
             <div className="w-1/3">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Method</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Method</label>
               <select
                 value={method}
                 onChange={(e) => setMethod(e.target.value)}
@@ -76,7 +76,7 @@ export const CurlGenerator: React.FC = () => {
               </select>
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-1">URL</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">URL</label>
               <input
                 type="text"
                 value={url}
@@ -89,7 +89,7 @@ export const CurlGenerator: React.FC = () => {
 
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <label className="block text-sm font-medium text-gray-700">Headers</label>
+              <label className="block text-sm font-medium text-gray-300">Headers</label>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -129,7 +129,7 @@ export const CurlGenerator: React.FC = () => {
 
           {(method === 'POST' || method === 'PUT' || method === 'PATCH') && (
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Request Body</label>
+              <label className="block text-sm font-medium text-gray-300">Request Body</label>
               <textarea
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
@@ -142,12 +142,12 @@ export const CurlGenerator: React.FC = () => {
 
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <label className="block text-sm font-medium text-gray-700">Generated cURL Command</label>
+            <label className="block text-sm font-medium text-gray-300">Generated cURL Command</label>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleCopy}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-500 hover:text-gray-300"
             >
               {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
             </motion.button>

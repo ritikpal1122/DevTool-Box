@@ -57,13 +57,13 @@ export const CronBuilder: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-6"
     >
-      <h2 className="text-2xl font-bold text-gray-800">Cron Expression Builder</h2>
+      <h2 className="text-2xl font-bold text-white">Cron Expression Builder</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Minutes</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Minutes</label>
               <input
                 type="text"
                 value={minutes}
@@ -73,7 +73,7 @@ export const CronBuilder: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Hours</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Hours</label>
               <input
                 type="text"
                 value={hours}
@@ -83,7 +83,7 @@ export const CronBuilder: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Day (Month)</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Day (Month)</label>
               <input
                 type="text"
                 value={dayOfMonth}
@@ -93,7 +93,7 @@ export const CronBuilder: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Month</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Month</label>
               <input
                 type="text"
                 value={month}
@@ -103,7 +103,7 @@ export const CronBuilder: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Day (Week)</label>
+              <label className="block text-sm font-medium text-gray-300 mb-1">Day (Week)</label>
               <input
                 type="text"
                 value={dayOfWeek}
@@ -116,12 +116,12 @@ export const CronBuilder: React.FC = () => {
 
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <label className="block text-sm font-medium text-gray-700">Expression</label>
+              <label className="block text-sm font-medium text-gray-300">Expression</label>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopy}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-300"
               >
                 {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
               </motion.button>
@@ -129,18 +129,18 @@ export const CronBuilder: React.FC = () => {
             <div className="bg-gray-900 text-white rounded-lg p-4 font-mono">
               {expression}
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <p className="text-gray-700">{description}</p>
+            <div className="bg-gray-900 rounded-lg p-4">
+              <p className="text-gray-300">{description}</p>
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-700">Quick Reference</h3>
-          <div className="bg-white rounded-lg shadow p-4 space-y-4">
+          <h3 className="text-lg font-semibold text-red-600">Quick Reference</h3>
+          <div className="border rounded-lg shadow p-4 space-y-4">
             <div>
-              <h4 className="font-medium text-gray-700">Special Characters</h4>
-              <ul className="mt-2 space-y-2 text-sm text-gray-600">
+              <h4 className="font-medium text-red-600">Special Characters</h4>
+              <ul className="mt-2 space-y-2 text-sm text-gray-300">
                 <li><span className="font-mono">*</span> - any value</li>
                 <li><span className="font-mono">,</span> - value list separator</li>
                 <li><span className="font-mono">-</span> - range of values</li>
@@ -148,8 +148,8 @@ export const CronBuilder: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-medium text-gray-700">Common Examples</h4>
-              <ul className="mt-2 space-y-2 text-sm text-gray-600">
+              <h4 className="font-medium text-red-600">Common Examples</h4>
+              <ul className="mt-2 space-y-2 text-sm text-gray-300">
                 <li><span className="font-mono">0 0 * * *</span> - Daily at midnight</li>
                 <li><span className="font-mono">*/15 * * * *</span> - Every 15 minutes</li>
                 <li><span className="font-mono">0 9-17 * * 1-5</span> - Working hours</li>

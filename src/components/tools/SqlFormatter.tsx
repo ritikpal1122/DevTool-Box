@@ -56,37 +56,41 @@ export const SqlFormatter: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="h-full p-6 space-y-4"
     >
-      <h2 className="text-2xl font-bold text-gray-800">SQL Formatter</h2>
-      
+      <h2 className="text-2xl font-bold text-white">SQL Formatter</h2>
+    <div className='flex justify-end'>
+    <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={formatSql}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Format
+              </motion.button>
+    </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
+
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Input SQL</label>
+          <label className="block text-sm font-medium text-gray-300">Input SQL</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-full h-full p-4 font-mono text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full h-full p-4 font-mono text-sm rounded-lg border bg-dark-light border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             placeholder="Enter your SQL query here..."
           />
         </div>
         
-        <div className="space-y-2">
-          <div className="flex justify-between items-center">
-            <label className="block text-sm font-medium text-gray-700">Formatted Output</label>
+        <div className="space-y-2 pb-10 md:pb-0">
+          
+          <div className="flex justify-between items-center mt-5 md:mt-0 ">
+            <label className="block text-sm font-medium text-gray-300">Formatted Output</label>
             <div className="flex gap-2">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={formatSql}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-              >
-                Format
-              </motion.button>
+            
               {formatted && (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleCopy}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-500 hover:text-gray-300"
                 >
                   {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                 </motion.button>
@@ -103,7 +107,7 @@ export const SqlFormatter: React.FC = () => {
               {formatted}
             </SyntaxHighlighter>
           ) : (
-            <div className="h-full bg-gray-50 rounded-lg p-4 text-gray-400">
+            <div className="h-full bg-dark-light border rounded-lg p-4 text-gray-400">
               Formatted SQL will appear here...
             </div>
           )}
